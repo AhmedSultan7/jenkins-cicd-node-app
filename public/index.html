@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+    <meta name="description" content="A focused workspace for keeping your next steps in view.">
+    <title>Focusboard — Make room for what matters</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Focusboard home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m5 12.5 4.2 4.2L19.5 6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>focusboard<span class="brand-period">.</span></span>
+        </a>
+        <div class="topbar-note"><span class="status-dot"></span> Your space, in sync</div>
+      </header>
+
+      <section class="welcome">
+        <div class="welcome-copy">
+          <p class="eyebrow"><span class="sparkle">✦</span> A LITTLE MORE FOCUS</p>
+          <h1>Make room for<br><span>what matters.</span></h1>
+          <p class="welcome-subtitle">A clear mind starts with a clear list. Pick a next step and make it happen.</p>
+        </div>
+        <div class="date-card">
+          <div class="date-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5.5" width="17" height="15" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 3.5v4M16.5 3.5v4M3.5 10h17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="m9.5 14 1.5 1.5 3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div><span class="date-label">TODAY</span><strong id="today-date">Your day</strong></div>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Task overview">
+        <article class="stat-card stat-total">
+          <div class="stat-icon" aria-hidden="true">✳</div>
+          <div><span class="stat-label">ALL TASKS</span><strong id="total-count">—</strong></div>
+          <span class="stat-caption">on your list</span>
+        </article>
+        <article class="stat-card stat-active">
+          <div class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </div>
+          <div><span class="stat-label">IN PROGRESS</span><strong id="active-count">—</strong></div>
+          <span class="stat-caption">one step at a time</span>
+        </article>
+        <article class="stat-card stat-done">
+          <div class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m5 12.5 4.2 4.2L19.5 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div><span class="stat-label">COMPLETED</span><strong id="done-count">—</strong></div>
+          <span class="stat-caption">look at you go</span>
+        </article>
+      </section>
+
+      <section class="board" aria-labelledby="tasks-title">
+        <div class="board-heading">
+          <div>
+            <p class="eyebrow board-eyebrow">YOUR WORKSPACE</p>
+            <h2 id="tasks-title">The to-do list<span class="heading-period">.</span></h2>
+          </div>
+          <button class="text-button" id="clear-completed" type="button">Clear completed</button>
+        </div>
+
+        <form class="add-form" id="task-form">
+          <label class="sr-only" for="task-title">Add a task</label>
+          <span class="add-icon" aria-hidden="true">+</span>
+          <input id="task-title" name="title" type="text" maxlength="120" placeholder="What would you like to get done?" autocomplete="off" required>
+          <button class="add-button" type="submit"><span>Add task</span><span aria-hidden="true">↗</span></button>
+        </form>
+
+        <div class="list-toolbar">
+          <div class="filter-tabs" role="group" aria-label="Filter tasks">
+            <button class="filter-tab is-selected" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-tab" type="button" data-filter="active" aria-pressed="false">In progress</button>
+            <button class="filter-tab" type="button" data-filter="done" aria-pressed="false">Completed</button>
+          </div>
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <input id="task-search" type="search" placeholder="Search tasks" aria-label="Search tasks">
+          </label>
+        </div>
+
+        <div class="task-list" id="task-list" aria-live="polite" aria-busy="true"></div>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+        <footer class="board-footer">
+          <span><span class="footer-sparkle">✦</span> Small steps add up to big things.</span>
+          <span id="remaining-note">Loading your list…</span>
+        </footer>
+      </section>
+      <p class="page-footer">Made for your next good idea <span>✦</span></p>
+    </main>
+  </body>
+</html>
