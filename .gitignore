@@ -1,4 +1,7 @@
-node_modules/
-npm-debug.log*
+node_modules
+.git
 .env
-coverage/
+.env.*
+coverage
+npm-debug.log*
+.DS_Store
